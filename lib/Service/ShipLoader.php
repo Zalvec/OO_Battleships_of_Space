@@ -5,6 +5,10 @@ class ShipLoader
 {
     private $pdo;
 
+    public function __construct(PDO $pdo){
+        $this->pdo = $pdo;
+    }
+
     /**
      * @return Ship[]
      * @throws Exception
@@ -112,13 +116,8 @@ class ShipLoader
     }
 
     /** @return PDO */
-    private function getPDO(){
-        if($this->pdo === null){            //zorgt ervoor dat de pdo maar 1x word uitgevoerd
-            $pdo = new PDO('mysql:host=localhost;dbname=oo_battle', 'root', 'ArtHur17');
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $this->pdo = $pdo;
-        }
+    private function getPDO()
+    {
         return $this->pdo;          //ongeacht of deze reeds is aangemaakt of net is aangemaakt, slaan we dit op in $pdo
     }
 }

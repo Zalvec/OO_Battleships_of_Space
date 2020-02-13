@@ -5,7 +5,8 @@
 
 require __DIR__.'/bootstrap.php';
 
-$shipLoader = new ShipLoader();
+$container = new Container($configuration);
+$shipLoader = $container->getShipLoader();
 $ships = $shipLoader->getShips();
 //var_dump($ships);
 
